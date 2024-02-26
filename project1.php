@@ -5,7 +5,7 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         </head>
     <body>
-        <!-- TODO: Fix all bugs/poor practice in the form -->
+        
         <form action="processing_page.php" method="post" class="survey" style="padding: 20px; ">
 
             <fieldset>
@@ -28,11 +28,11 @@
                     {
                         if ($i == 12)
                         {
-                            printf("<input type=\"radio\" name=\"12\" id=\"1\"><label>68+</label><br>");
+                            printf("<input type=\"radio\" name=\"age\" id=\"1\"><label>68+</label><br>");
                         }
                         else
                         {
-                            printf("<input type=\"radio\" name=\"%d\" id=\"1\"><label>%d-%d</label><br>", $i, $Start, $End);
+                            printf("<input type=\"radio\" name=\"age\" id=\"%d\"><label>%d-%d</label><br>", $i, $Start, $End);
 
                             $Start = $End + 1;
                             $End += 5;
@@ -65,9 +65,5 @@
 
             <button type="submit" name="button" id = "button" class="btn btn-info">Submit</button> 
         </form>
-
-        <!-- TODO: All the backend PHP/SQL stuff! (you may need a separate file for this!) -->
-        <?php
-        ?>
     </body>
 </html>
