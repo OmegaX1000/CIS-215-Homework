@@ -5,7 +5,20 @@
 
     <body>
         <?php
+        require('../dbconfig.php');
+
+        $db = connectDB();
         $GlobalPassword = "";
+
+        function CoreSQL($TempEmail, $TempPass, $TempAge, $TempGender, $TempFeat, $TempRating)
+        {
+            $FormCreate = $db->prepare('CREATE TABLE FormData (id INT PRIMARY KEY AUTO_INCREMENT, Email UNIQUE TEXT(256), Passwd TEXT, Age INT, Gender TEXT, FeatRequest TEXT, Rating TEXT);');
+            $FormCreate->execute();
+            
+            $FormAdd = $db->prepare('INSERT INTO FormData (Email, Passwd, Age, Gender, FeatRequest, Rating) VALUES (?, ?, ?, ?, ?, ?);');
+            $InputData = array($TempEmail, $TempPass, $TempAge, $TempGender, $TempFeat, $TempRating);
+            $FormAdd->execute($InputData);
+        }
 
         function validate_input()
         {
@@ -22,6 +35,7 @@
 
             if($email && $age && $FeatRequest && $php_rating && password_verify($password, $GlobalPassword) && in_array($gender, $CheckArray, true))
             {
+                CoreSQL($email, $password, $age, $gender, $FeatRequest, $php_rating);
                 return true;
             }
         }
