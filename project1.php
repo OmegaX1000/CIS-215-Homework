@@ -28,11 +28,12 @@
                     {
                         if ($i == 12)
                         {
-                            printf("<input type=\"radio\" name=\"age\" id=\"1\"><label>68+</label><br>");
+                            printf("<input type=\"radio\" name=\"age\" id=\"1\", value=\"68+\"><label>13</label><br>");
                         }
                         else
                         {
-                            printf("<input type=\"radio\" name=\"age\" id=\"%d\"><label>%d-%d</label><br>", $i, $Start, $End);
+                            printf("<input type=\"radio\" name=\"age\" id=\"%d\", value=\"%d\">", $i, $i);
+                            printf("<label>%d-%d</label><br>", $Start, $End);
 
                             $Start = $End + 1;
                             $End += 5;
@@ -61,6 +62,10 @@
             <fieldset>
                 <label>How would you rate PHP on a scale from 1 to 10?</label>
                 <input type="number" name="rate-php-num" id="rate-php-num" min="1" max="10" step="1">
+            </fieldset>
+
+            <fieldset>
+                <a href="data_page.php">Data page</a>
             </fieldset>
 
             <button type="submit" name="button" id = "button" class="btn btn-info">Submit</button> 
